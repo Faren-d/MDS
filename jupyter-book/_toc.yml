@@ -1,0 +1,8 @@
+format: jb-book
+root: README
+parts:
+- caption: Lectures
+  chapters:
+  - file: lecture-notes/lecture1_intro-to-python-via-pandas
+  - file: lecture-notes/lecture2_data-types-operators-and-tidy-data
+ 
