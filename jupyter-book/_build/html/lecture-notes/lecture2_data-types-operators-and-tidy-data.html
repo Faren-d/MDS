@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lecture 2: Reshaping data &#8212; DSCI 511 Python Programming for Data Science</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-notes/lecture2_data-types-operators-and-tidy-data';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -75,28 +70,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +108,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,9 +136,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../README.html">
+  
   
   
   
@@ -150,12 +152,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/hex_sticker_small.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/hex_sticker_small.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/hex_sticker_small.png" class="logo__image only-light" alt="DSCI 511 Python Programming for Data Science - Home"/>
+    <script>document.write(`<img src="../_static/hex_sticker_small.png" class="logo__image only-dark" alt="DSCI 511 Python Programming for Data Science - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -195,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -204,14 +217,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -333,26 +346,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -406,14 +421,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <a class="reference internal image-reference" href="../_images/dsci511_header.png"><img alt="../_images/dsci511_header.png" src="../_images/dsci511_header.png" style="width: 600px;" /></a>
 <section id="lecture-2-reshaping-data">
-<h1>Lecture 2: Reshaping data<a class="headerlink" href="#lecture-2-reshaping-data" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 2: Reshaping data<a class="headerlink" href="#lecture-2-reshaping-data" title="Link to this heading">#</a></h1>
 </section>
 <section id="lecture-learning-objectives">
-<h1>Lecture learning objectives<a class="headerlink" href="#lecture-learning-objectives" title="Permalink to this heading">#</a></h1>
+<h1>Lecture learning objectives<a class="headerlink" href="#lecture-learning-objectives" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Filter columns in a DataFrame using logical operators or the <code class="docutils literal notranslate"><span class="pre">.query()</span></code> method</p></li>
 <li><p>Remove or fill missing values in a dataframe with <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> and <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>.</p></li>
@@ -429,7 +444,7 @@ document.write(`
 </div>
 </section>
 <section id="data-types">
-<h1>Data types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h1>
+<h1>Data types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>In lecture 1 you learned about the following types: DataFrame (table), Series (column), integer (whole number), and string (text)</p></li>
 <li><p>A new type for this lecture is ‘boolean’. There are only two boolean values: True or False (note the first letter is capitalized in Python code).</p></li>
@@ -2003,7 +2018,7 @@ Name: Mean Temp (°C), Length: 917, dtype: bool
 <li><p>Parentheses are not required around each condition, though you can choose to add them if you need to group certain conditions together.</p></li>
 </ul>
 <section id="practice">
-<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this heading">#</a></h2>
+<h2>Practice<a class="headerlink" href="#practice" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Filter for every day in 1937.</p></li>
 <li><p>Filter for months from August to December (inclusive)</p></li>
@@ -2023,7 +2038,7 @@ Name: Mean Temp (°C), Length: 917, dtype: bool
 </section>
 </section>
 <section id="changing-values-based-on-conditions">
-<h1>Changing values based on conditions<a class="headerlink" href="#changing-values-based-on-conditions" title="Permalink to this heading">#</a></h1>
+<h1>Changing values based on conditions<a class="headerlink" href="#changing-values-based-on-conditions" title="Link to this heading">#</a></h1>
 <p>You can combine boolean conditionals with <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> from Lecture 1 to update your DataFrame. Let’s open up the language database from the previous lecture and make a change to it. Some languages have an unknown genetic grouping (‘family’), which is indicated by a ‘?’ in the data. Let’s find all instances of ‘?’ and replace it with the string ‘Isolate’, which is the more common technical term for such languages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2241,7 +2256,7 @@ Name: Mean Temp (°C), Length: 917, dtype: bool
 </div>
 </section>
 <section id="empty-cells-missing-values">
-<h1>Empty cells/missing values<a class="headerlink" href="#empty-cells-missing-values" title="Permalink to this heading">#</a></h1>
+<h1>Empty cells/missing values<a class="headerlink" href="#empty-cells-missing-values" title="Link to this heading">#</a></h1>
 <p>Sometimes a cell in a spreadsheet will be missing values. In the language data, some rows have an entry for source material, but others do not. Pandas represents empty cells with the special value <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, meaning “not a number”. You can check if your dataset has missing values like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2819,7 +2834,7 @@ Name: source, Length: 3338, dtype: bool
 </div></div></div>
 </div>
 <section id="renaming-columns">
-<h2>Renaming columns<a class="headerlink" href="#renaming-columns" title="Permalink to this heading">#</a></h2>
+<h2>Renaming columns<a class="headerlink" href="#renaming-columns" title="Link to this heading">#</a></h2>
 <p>To rename all the columns at once, you can directly set the <code class="docutils literal notranslate"><span class="pre">columns</span></code> attribute of your DataFrame. You’ll need to use a data type called a <em>list</em> which contains all of your column names between square brackets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3293,8 +3308,8 @@ Name: source, Length: 3338, dtype: bool
 <p>We will discuss how to use dictionaries in more detail in a future lecture. For now, you’ll just need to memorize this syntax for renaming columns.</p>
 </section>
 <section id="data-type-cheatsheet">
-<h2>Data type cheatsheet<a class="headerlink" href="#data-type-cheatsheet" title="Permalink to this heading">#</a></h2>
-<table class="colwidths-auto table">
+<h2>Data type cheatsheet<a class="headerlink" href="#data-type-cheatsheet" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Type name</p></th>
 <th class="head"><p>Data format</p></th>
@@ -3336,12 +3351,13 @@ Name: source, Length: 3338, dtype: bool
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="dataframe-reshaping">
-<h1>DataFrame reshaping<a class="headerlink" href="#dataframe-reshaping" title="Permalink to this heading">#</a></h1>
+<h1>DataFrame reshaping<a class="headerlink" href="#dataframe-reshaping" title="Link to this heading">#</a></h1>
 <section id="tidy-data">
-<h2>Tidy data<a class="headerlink" href="#tidy-data" title="Permalink to this heading">#</a></h2>
+<h2>Tidy data<a class="headerlink" href="#tidy-data" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy data</a> is about “linking the structure of a dataset with its semantics (its meaning)”</p></li>
 <li><p>It is defined by:</p>
@@ -3358,12 +3374,12 @@ Name: source, Length: 3338, dtype: bool
 <p>Source: <a class="reference external" href="https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure">r4ds</a></p>
 </section>
 <section id="wide-vs-long-tables">
-<h2>Wide vs. long tables<a class="headerlink" href="#wide-vs-long-tables" title="Permalink to this heading">#</a></h2>
+<h2>Wide vs. long tables<a class="headerlink" href="#wide-vs-long-tables" title="Link to this heading">#</a></h2>
 <a class="reference internal image-reference" href="https://www.statology.org/wp-content/uploads/2021/12/wideLong1-1.png"><img alt="https://www.statology.org/wp-content/uploads/2021/12/wideLong1-1.png" src="https://www.statology.org/wp-content/uploads/2021/12/wideLong1-1.png" style="width: 600px;" /></a>
 <p><a class="reference external" href="https://www.statology.org/wp-content/uploads/2021/12/wideLong1-1.png">Image source</a></p>
 </section>
 <section id="transpose">
-<h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this heading">#</a></h2>
+<h2>Transpose<a class="headerlink" href="#transpose" title="Link to this heading">#</a></h2>
 <p>Transposing a table means swapping the rows and columns. DataFrames have a <code class="docutils literal notranslate"><span class="pre">.transpose()</span></code> function for this. Run the next two cells and compare the output.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3632,7 +3648,7 @@ Name: source, Length: 3338, dtype: bool
 </div>
 </section>
 <section id="pivot">
-<h2>Pivot<a class="headerlink" href="#pivot" title="Permalink to this heading">#</a></h2>
+<h2>Pivot<a class="headerlink" href="#pivot" title="Link to this heading">#</a></h2>
 <p>Pivoting a table means changing it from long to wide format. To illustrate, we will explore a dataset of the results from the 2024 Olympics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4611,7 +4627,7 @@ Name: Fencing, Length: 93, dtype: int64
 </div>
 </section>
 <section id="id1">
-<h2>Practice<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Practice<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Take a few moment to play with <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code> and change the parameters around</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4622,7 +4638,7 @@ Name: Fencing, Length: 93, dtype: int64
 </div>
 </section>
 <section id="pivot-table">
-<h2><code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code><a class="headerlink" href="#pivot-table" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code><a class="headerlink" href="#pivot-table" title="Link to this heading">#</a></h2>
 <p>You can only pivot a table if it has unique combinations of row and column values. If you have duplicates, then you’ll need to use the <code class="docutils literal notranslate"><span class="pre">pivot_table()</span></code> function instead. To illustrate this, load the accent study dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4735,37 +4751,37 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;FirstLanguage&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Accent&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TestPct&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/frame.py:9028,</span> in <span class="ni">DataFrame.pivot</span><span class="nt">(self, columns, index, values)</span>
-<span class="g g-Whitespace">   </span><span class="mi">9021</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">9022</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;pivot&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">   </span><span class="mi">9023</span> <span class="k">def</span> <span class="nf">pivot</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">9024</span>     <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">lib</span><span class="o">.</span><span class="n">no_default</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">lib</span><span class="o">.</span><span class="n">no_default</span>
-<span class="g g-Whitespace">   </span><span class="mi">9025</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">9026</span>     <span class="kn">from</span> <span class="nn">pandas.core.reshape.pivot</span> <span class="kn">import</span> <span class="n">pivot</span>
-<span class="ne">-&gt; </span><span class="mi">9028</span>     <span class="k">return</span> <span class="n">pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/frame.py:9339,</span> in <span class="ni">DataFrame.pivot</span><span class="nt">(self, columns, index, values)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9332</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9333</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;pivot&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">9334</span> <span class="k">def</span> <span class="nf">pivot</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">9335</span>     <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">lib</span><span class="o">.</span><span class="n">no_default</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">lib</span><span class="o">.</span><span class="n">no_default</span>
+<span class="g g-Whitespace">   </span><span class="mi">9336</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">9337</span>     <span class="kn">from</span> <span class="nn">pandas.core.reshape.pivot</span> <span class="kn">import</span> <span class="n">pivot</span>
+<span class="ne">-&gt; </span><span class="mi">9339</span>     <span class="k">return</span> <span class="n">pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/reshape/pivot.py:553,</span> in <span class="ni">pivot</span><span class="nt">(data, columns, index, values)</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span>         <span class="n">indexed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">multiindex</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">550</span> <span class="c1"># error: Argument 1 to &quot;unstack&quot; of &quot;DataFrame&quot; has incompatible type &quot;Union</span>
-<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="c1"># [List[Any], ExtensionArray, ndarray[Any, Any], Index, Series]&quot;; expected</span>
-<span class="g g-Whitespace">    </span><span class="mi">552</span> <span class="c1"># &quot;Hashable&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">553</span> <span class="n">result</span> <span class="o">=</span> <span class="n">indexed</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">columns_listlike</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
-<span class="g g-Whitespace">    </span><span class="mi">554</span> <span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">    </span><span class="mi">555</span>     <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">no_default</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">558</span> <span class="k">return</span> <span class="n">result</span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/pivot.py:570,</span> in <span class="ni">pivot</span><span class="nt">(data, columns, index, values)</span>
+<span class="g g-Whitespace">    </span><span class="mi">566</span>         <span class="n">indexed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">multiindex</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="c1"># error: Argument 1 to &quot;unstack&quot; of &quot;DataFrame&quot; has incompatible type &quot;Union</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span> <span class="c1"># [List[Any], ExtensionArray, ndarray[Any, Any], Index, Series]&quot;; expected</span>
+<span class="g g-Whitespace">    </span><span class="mi">569</span> <span class="c1"># &quot;Hashable&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">570</span> <span class="n">result</span> <span class="o">=</span> <span class="n">indexed</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">columns_listlike</span><span class="p">)</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">    </span><span class="mi">571</span> <span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span>     <span class="n">name</span> <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">lib</span><span class="o">.</span><span class="n">no_default</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span> <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">575</span> <span class="k">return</span> <span class="n">result</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/series.py:4455,</span> in <span class="ni">Series.unstack</span><span class="nt">(self, level, fill_value, sort)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4410</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">4411</span><span class="sd"> Unstack, also known as pivot, Series with MultiIndex to produce DataFrame.</span>
-<span class="g g-Whitespace">   </span><span class="mi">4412</span><span class="sd"> </span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/series.py:4615,</span> in <span class="ni">Series.unstack</span><span class="nt">(self, level, fill_value, sort)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4570</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">4571</span><span class="sd"> Unstack, also known as pivot, Series with MultiIndex to produce DataFrame.</span>
+<span class="g g-Whitespace">   </span><span class="mi">4572</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4451</span><span class="sd"> b    2    4</span>
-<span class="g g-Whitespace">   </span><span class="mi">4452</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">4453</span> <span class="kn">from</span> <span class="nn">pandas.core.reshape.reshape</span> <span class="kn">import</span> <span class="n">unstack</span>
-<span class="ne">-&gt; </span><span class="mi">4455</span> <span class="k">return</span> <span class="n">unstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4611</span><span class="sd"> b    2    4</span>
+<span class="g g-Whitespace">   </span><span class="mi">4612</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">4613</span> <span class="kn">from</span> <span class="nn">pandas.core.reshape.reshape</span> <span class="kn">import</span> <span class="n">unstack</span>
+<span class="ne">-&gt; </span><span class="mi">4615</span> <span class="k">return</span> <span class="n">unstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:517,</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value, sort)</span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:517,</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value, sort)</span>
 <span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">if</span> <span class="n">is_1d_only_ea_dtype</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="k">return</span> <span class="n">_unstack_extension_series</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">517</span> <span class="n">unstacker</span> <span class="o">=</span> <span class="n">_Unstacker</span><span class="p">(</span>
@@ -4775,7 +4791,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">    </span><span class="mi">521</span>     <span class="n">obj</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">value_columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span>
 <span class="g g-Whitespace">    </span><span class="mi">522</span> <span class="p">)</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:154,</span> in <span class="ni">_Unstacker.__init__</span><span class="nt">(self, index, level, constructor, sort)</span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:154,</span> in <span class="ni">_Unstacker.__init__</span><span class="nt">(self, index, level, constructor, sort)</span>
 <span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">if</span> <span class="n">num_cells</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="sa">f</span><span class="s2">&quot;The following operation may generate </span><span class="si">{</span><span class="n">num_cells</span><span class="si">}</span><span class="s2"> cells &quot;</span>
@@ -4785,7 +4801,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">154</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_selectors</span><span class="p">()</span>
 
-<span class="nn">File ~/miniconda3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:210,</span> in <span class="ni">_Unstacker._make_selectors</span><span class="nt">(self)</span>
+<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:210,</span> in <span class="ni">_Unstacker._make_selectors</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="n">mask</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">210</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index contains duplicate entries, cannot reshape&quot;</span><span class="p">)</span>
@@ -4805,12 +4821,205 @@ Name: Fencing, Length: 93, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Accent</th>
+      <th>British</th>
+      <th>Chinese</th>
+      <th>Spanish</th>
+    </tr>
+    <tr>
+      <th>FirstLanguage</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Arabic</th>
+      <td>37.500000</td>
+      <td>62.500000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Bengali</th>
+      <td>59.375000</td>
+      <td>46.875000</td>
+      <td>62.500000</td>
+    </tr>
+    <tr>
+      <th>Burmese</th>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>25.000000</td>
+    </tr>
+    <tr>
+      <th>Burmese</th>
+      <td>37.500000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Cantonese</th>
+      <td>46.428571</td>
+      <td>53.571429</td>
+      <td>55.357143</td>
+    </tr>
+    <tr>
+      <th>English</th>
+      <td>58.333333</td>
+      <td>70.833333</td>
+      <td>68.750000</td>
+    </tr>
+    <tr>
+      <th>Estonian</th>
+      <td>62.500000</td>
+      <td>37.500000</td>
+      <td>75.000000</td>
+    </tr>
+    <tr>
+      <th>French</th>
+      <td>81.250000</td>
+      <td>81.250000</td>
+      <td>75.000000</td>
+    </tr>
+    <tr>
+      <th>Hindi</th>
+      <td>75.000000</td>
+      <td>25.000000</td>
+      <td>62.500000</td>
+    </tr>
+    <tr>
+      <th>Italian</th>
+      <td>75.000000</td>
+      <td>75.000000</td>
+      <td>87.500000</td>
+    </tr>
+    <tr>
+      <th>Korean</th>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Luganda</th>
+      <td>62.500000</td>
+      <td>75.000000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Malayalam</th>
+      <td>62.500000</td>
+      <td>25.000000</td>
+      <td>25.000000</td>
+    </tr>
+    <tr>
+      <th>Mandarin</th>
+      <td>50.961538</td>
+      <td>49.519231</td>
+      <td>42.788462</td>
+    </tr>
+    <tr>
+      <th>Montenegrin</th>
+      <td>50.000000</td>
+      <td>37.500000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Pashto</th>
+      <td>68.750000</td>
+      <td>31.250000</td>
+      <td>50.000000</td>
+    </tr>
+    <tr>
+      <th>Portuguese</th>
+      <td>52.083333</td>
+      <td>35.416667</td>
+      <td>60.416667</td>
+    </tr>
+    <tr>
+      <th>Russian</th>
+      <td>62.500000</td>
+      <td>50.000000</td>
+      <td>62.500000</td>
+    </tr>
+    <tr>
+      <th>Serbian</th>
+      <td>75.000000</td>
+      <td>87.500000</td>
+      <td>37.500000</td>
+    </tr>
+    <tr>
+      <th>Spanish</th>
+      <td>51.562500</td>
+      <td>51.562500</td>
+      <td>59.375000</td>
+    </tr>
+    <tr>
+      <th>Spanish</th>
+      <td>62.500000</td>
+      <td>37.500000</td>
+      <td>37.500000</td>
+    </tr>
+    <tr>
+      <th>Swahili</th>
+      <td>68.750000</td>
+      <td>75.000000</td>
+      <td>62.500000</td>
+    </tr>
+    <tr>
+      <th>Tamil</th>
+      <td>87.500000</td>
+      <td>87.500000</td>
+      <td>87.500000</td>
+    </tr>
+    <tr>
+      <th>Turkish</th>
+      <td>56.250000</td>
+      <td>75.000000</td>
+      <td>37.500000</td>
+    </tr>
+    <tr>
+      <th>Vietnamese</th>
+      <td>37.500000</td>
+      <td>50.000000</td>
+      <td>62.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>To find the results for a particular first language, use <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;FirstLanguage&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Accent&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TestPct&#39;</span><span class="p">)</span>
 <span class="n">r</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Turkish&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accent
+British    56.25
+Chinese    75.00
+Spanish    37.50
+Name: Turkish, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -4823,11 +5032,127 @@ Name: Fencing, Length: 93, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Accent</th>
+      <th colspan="3" halign="left">British</th>
+      <th colspan="3" halign="left">Chinese</th>
+      <th colspan="3" halign="left">Spanish</th>
+    </tr>
+    <tr>
+      <th>Test</th>
+      <th>Baikal</th>
+      <th>CompSci</th>
+      <th>balloon</th>
+      <th>Baikal</th>
+      <th>CompSci</th>
+      <th>balloon</th>
+      <th>Baikal</th>
+      <th>CompSci</th>
+      <th>balloon</th>
+    </tr>
+    <tr>
+      <th>FirstLanguage</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Arabic</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>37.5</td>
+      <td>62.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Bengali</th>
+      <td>62.5</td>
+      <td>58.333333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>46.875</td>
+      <td>58.333333</td>
+      <td>75.00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Burmese</th>
+      <td>50.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.00</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.000000</td>
+    </tr>
+    <tr>
+      <th>Burmese</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>37.5</td>
+      <td>NaN</td>
+      <td>50.00</td>
+      <td>NaN</td>
+      <td>50.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Cantonese</th>
+      <td>62.5</td>
+      <td>50.000000</td>
+      <td>37.5</td>
+      <td>50.0</td>
+      <td>56.25</td>
+      <td>NaN</td>
+      <td>68.750000</td>
+      <td>56.25</td>
+      <td>45.833333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Note that this creates a large number of <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values because there are some combinations of language/accent/test that did not occur in the original data (e.g. no Burmese speakers heard the CompSci passage with a Britsh accent)</p>
 </section>
 <section id="melt">
-<h2>Melt<a class="headerlink" href="#melt" title="Permalink to this heading">#</a></h2>
+<h2>Melt<a class="headerlink" href="#melt" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">.melt()</span></code> works as the opposite of <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code>, and converts data from a wide format to a long format. To illustrate this, we’ll return to the Internet Movie Database.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4836,6 +5161,79 @@ Name: Fencing, Length: 93, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Series_Title</th>
+      <th>Released_Year</th>
+      <th>Certificate</th>
+      <th>Runtime</th>
+      <th>Genre</th>
+      <th>IMDB_Rating</th>
+      <th>Meta_score</th>
+      <th>Director</th>
+      <th>Star1</th>
+      <th>Star2</th>
+      <th>Star3</th>
+      <th>Star4</th>
+      <th>No_of_Votes</th>
+      <th>Gross</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>The Shawshank Redemption</td>
+      <td>1994</td>
+      <td>A</td>
+      <td>142 min</td>
+      <td>Drama</td>
+      <td>9.3</td>
+      <td>80.0</td>
+      <td>Frank Darabont</td>
+      <td>Tim Robbins</td>
+      <td>Morgan Freeman</td>
+      <td>Bob Gunton</td>
+      <td>William Sadler</td>
+      <td>2343110</td>
+      <td>28341469.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>The Godfather</td>
+      <td>1972</td>
+      <td>A</td>
+      <td>175 min</td>
+      <td>Crime, Drama</td>
+      <td>9.2</td>
+      <td>100.0</td>
+      <td>Francis Ford Coppola</td>
+      <td>Marlon Brando</td>
+      <td>Al Pacino</td>
+      <td>James Caan</td>
+      <td>Diane Keaton</td>
+      <td>1620367</td>
+      <td>134966411.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Let’s reshape the table so that rows are organized by director, and there are only two columns: ‘Actor’ and ‘Billing_Order’.</p>
 <p>To do this we’ll use <code class="docutils literal notranslate"><span class="pre">.melt()</span></code>, which requires up to four arguments:</p>
@@ -4852,6 +5250,101 @@ Name: Fencing, Length: 93, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Director</th>
+      <th>Billing_Order</th>
+      <th>Actor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Frank Darabont</td>
+      <td>Star1</td>
+      <td>Tim Robbins</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Francis Ford Coppola</td>
+      <td>Star1</td>
+      <td>Marlon Brando</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Christopher Nolan</td>
+      <td>Star1</td>
+      <td>Christian Bale</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Francis Ford Coppola</td>
+      <td>Star1</td>
+      <td>Al Pacino</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sidney Lumet</td>
+      <td>Star1</td>
+      <td>Henry Fonda</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3995</th>
+      <td>Blake Edwards</td>
+      <td>Star4</td>
+      <td>Buddy Ebsen</td>
+    </tr>
+    <tr>
+      <th>3996</th>
+      <td>George Stevens</td>
+      <td>Star4</td>
+      <td>Carroll Baker</td>
+    </tr>
+    <tr>
+      <th>3997</th>
+      <td>Fred Zinnemann</td>
+      <td>Star4</td>
+      <td>Donna Reed</td>
+    </tr>
+    <tr>
+      <th>3998</th>
+      <td>Alfred Hitchcock</td>
+      <td>Star4</td>
+      <td>William Bendix</td>
+    </tr>
+    <tr>
+      <th>3999</th>
+      <td>Alfred Hitchcock</td>
+      <td>Star4</td>
+      <td>Godfrey Tearle</td>
+    </tr>
+  </tbody>
+</table>
+<p>4000 rows × 3 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4862,10 +5355,142 @@ Name: Fencing, Length: 93, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actor</th>
+      <th>Billing_Order</th>
+    </tr>
+    <tr>
+      <th>Director</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Marlon Brando</td>
+      <td>Star1</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Al Pacino</td>
+      <td>Star1</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Martin Sheen</td>
+      <td>Star1</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Gene Hackman</td>
+      <td>Star1</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Al Pacino</td>
+      <td>Star1</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Al Pacino</td>
+      <td>Star2</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Robert De Niro</td>
+      <td>Star2</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Marlon Brando</td>
+      <td>Star2</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>John Cazale</td>
+      <td>Star2</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Diane Keaton</td>
+      <td>Star2</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>James Caan</td>
+      <td>Star3</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Robert Duvall</td>
+      <td>Star3</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Robert Duvall</td>
+      <td>Star3</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Allen Garfield</td>
+      <td>Star3</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Andy Garcia</td>
+      <td>Star3</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Diane Keaton</td>
+      <td>Star4</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Diane Keaton</td>
+      <td>Star4</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Frederic Forrest</td>
+      <td>Star4</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Frederic Forrest</td>
+      <td>Star4</td>
+    </tr>
+    <tr>
+      <th>Francis Ford Coppola</th>
+      <td>Talia Shire</td>
+      <td>Star4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="reseting-the-index">
-<h2>Reseting the index<a class="headerlink" href="#reseting-the-index" title="Permalink to this heading">#</a></h2>
+<h2>Reseting the index<a class="headerlink" href="#reseting-the-index" title="Link to this heading">#</a></h2>
 <p>Reshaping a table can change the way rows are indexed. Sometimes, you may want to reset the index to use the default ordinal numbers. For example, let’s load a dataset about the Titanic, and use <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> to compare survival rates for men and women places in different passenger classes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5122,8 +5747,8 @@ Name: Fencing, Length: 93, dtype: int64
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture1_intro-to-python-via-pandas.html"
@@ -5142,6 +5767,7 @@ Name: Fencing, Length: 93, dtype: int64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -5194,9 +5820,10 @@ By The Jupyter Book community
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -5220,8 +5847,8 @@ By The Jupyter Book community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
