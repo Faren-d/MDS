@@ -5,5 +5,5 @@ parts:
   chapters:
   - file: lecture-notes/lecture1_intro-to-python-via-pandas
   - file: lecture-notes/lecture2_data-types-operators-and-tidy-data
-  - file: lecture-notes/lecture3_advanced-data-wrangling-with-pandas.html
+  - file: lecture-notes/lecture3_advanced-data-wrangling-with-pandas
  
