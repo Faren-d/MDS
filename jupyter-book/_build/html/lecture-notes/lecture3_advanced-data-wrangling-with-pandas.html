@@ -433,7 +433,6 @@ document.write(`
 <li><p>Create these datetime objects with functions like <code class="docutils literal notranslate"><span class="pre">pd.Timestamp()</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.Period()</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.date_range()</span></code>, <code class="docutils literal notranslate"><span class="pre">pd.period_range()</span></code>.</p></li>
 <li><p>Index a datetime index with partial string indexing.</p></li>
 <li><p>Perform basic datetime operations like splitting a datetime into constituent parts (e.g., <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">weekday</span></code>, <code class="docutils literal notranslate"><span class="pre">second</span></code>, etc), apply offsets, change timezones, and resample with <code class="docutils literal notranslate"><span class="pre">.resample()</span></code>.</p></li>
-<li><p>Make basic plots in Pandas by accessing the <code class="docutils literal notranslate"><span class="pre">.plot</span></code> attribute or importing functions from <code class="docutils literal notranslate"><span class="pre">pandas.plotting</span></code>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1943,7 +1942,7 @@ Name: 2019-10-10 00:10:31, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/var/folders/bm/qy38mcyd26vfwc9s2627qhyr0000gr/T/ipykernel_21966/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="nn">/var/folders/bm/qy38mcyd26vfwc9s2627qhyr0000gr/T/ipykernel_23308/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2011-12-29&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-12-31&#39;</span><span class="p">))</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span><span class="o">.</span><span class="n">year</span>  <span class="c1"># raises error</span>
 
@@ -2014,7 +2013,7 @@ dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x12ad65910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x13a237a10&gt;
 </pre></div>
 </div>
 </div>
@@ -2385,23 +2384,23 @@ Categories (7, object): [&#39;BARBUNYA&#39;, &#39;BOMBAY&#39;, &#39;CALI&#39;, &
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed {
+  #altair-viz-6ea9acc6021a47589fd784f6d2136a15.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed details,
-  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed details summary {
+  #altair-viz-6ea9acc6021a47589fd784f6d2136a15.vega-embed details,
+  #altair-viz-6ea9acc6021a47589fd784f6d2136a15.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-2b74914e1da3401789d3b7b031f8e7f7"></div>
+<div id="altair-viz-6ea9acc6021a47589fd784f6d2136a15"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-2b74914e1da3401789d3b7b031f8e7f7") {
-      outputDiv = document.getElementById("altair-viz-2b74914e1da3401789d3b7b031f8e7f7");
+    if (outputDiv.id !== "altair-viz-6ea9acc6021a47589fd784f6d2136a15") {
+      outputDiv = document.getElementById("altair-viz-6ea9acc6021a47589fd784f6d2136a15");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
