@@ -1561,26 +1561,26 @@ Name: 2019-10-10 00:10:31, dtype: object
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">cycling</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2019-10-01&#39;</span><span class="p">:</span><span class="s1">&#39;2019-10-13&#39;</span><span class="p">]</span> <span class="c1"># raises error</span>
 
-<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/indexing.py:1191,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">File /opt/miniconda3/envs/dsci511/lib/python3.12/site-packages/pandas/core/indexing.py:1191,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1189</span> <span class="n">maybe_callable</span> <span class="o">=</span> <span class="n">com</span><span class="o">.</span><span class="n">apply_if_callable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1190</span> <span class="n">maybe_callable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_deprecated_callable_usage</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">maybe_callable</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1191</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">maybe_callable</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/indexing.py:1411,</span> in <span class="ni">_LocIndexer._getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="nn">File /opt/miniconda3/envs/dsci511/lib/python3.12/site-packages/pandas/core/indexing.py:1411,</span> in <span class="ni">_LocIndexer._getitem_axis</span><span class="nt">(self, key, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1409</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1410</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1411</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_slice_axis</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1412</span> <span class="k">elif</span> <span class="n">com</span><span class="o">.</span><span class="n">is_bool_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1413</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getbool_axis</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/indexing.py:1443,</span> in <span class="ni">_LocIndexer._get_slice_axis</span><span class="nt">(self, slice_obj, axis)</span>
+<span class="nn">File /opt/miniconda3/envs/dsci511/lib/python3.12/site-packages/pandas/core/indexing.py:1443,</span> in <span class="ni">_LocIndexer._get_slice_axis</span><span class="nt">(self, slice_obj, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1440</span>     <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1442</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1443</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">slice_indexer</span><span class="p">(</span><span class="n">slice_obj</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">slice_obj</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">slice_obj</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1445</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1446</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_slice</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
 
-<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/indexes/datetimes.py:697,</span> in <span class="ni">DatetimeIndex.slice_indexer</span><span class="nt">(self, start, end, step)</span>
+<span class="nn">File /opt/miniconda3/envs/dsci511/lib/python3.12/site-packages/pandas/core/indexes/datetimes.py:697,</span> in <span class="ni">DatetimeIndex.slice_indexer</span><span class="nt">(self, start, end, step)</span>
 <span class="g g-Whitespace">    </span><span class="mi">694</span>     <span class="n">in_index</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">end_casted</span> <span class="o">==</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">696</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">in_index</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">697</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
@@ -1945,11 +1945,11 @@ Name: 2019-10-10 00:10:31, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/var/folders/yx/296325p15r92zgg4zc7px5qh0000gp/T/ipykernel_12245/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="nn">/var/folders/bm/qy38mcyd26vfwc9s2627qhyr0000gr/T/ipykernel_28173/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2011-12-29&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-12-31&#39;</span><span class="p">))</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span><span class="o">.</span><span class="n">year</span>  <span class="c1"># raises error</span>
 
-<span class="nn">~/miniforge3/lib/python3.11/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
+<span class="nn">/opt/miniconda3/envs/dsci511/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
 <span class="g g-Whitespace">   </span><span class="mi">6295</span>             <span class="ow">and</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessors</span>
 <span class="g g-Whitespace">   </span><span class="mi">6296</span>             <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info_axis</span><span class="o">.</span><span class="n">_can_hold_identifiers_and_holds_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">6297</span>         <span class="p">):</span>
@@ -2016,7 +2016,7 @@ dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x14aae61d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x1272fe330&gt;
 </pre></div>
 </div>
 </div>
@@ -2398,23 +2398,23 @@ Categories (7, object): [&#39;BARBUNYA&#39;, &#39;BOMBAY&#39;, &#39;CALI&#39;, &
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-94a6b91be1754d8ba7a31501d53dcd49.vega-embed {
+  #altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-94a6b91be1754d8ba7a31501d53dcd49.vega-embed details,
-  #altair-viz-94a6b91be1754d8ba7a31501d53dcd49.vega-embed details summary {
+  #altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec.vega-embed details,
+  #altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-94a6b91be1754d8ba7a31501d53dcd49"></div>
+<div id="altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-94a6b91be1754d8ba7a31501d53dcd49") {
-      outputDiv = document.getElementById("altair-viz-94a6b91be1754d8ba7a31501d53dcd49");
+    if (outputDiv.id !== "altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec") {
+      outputDiv = document.getElementById("altair-viz-fad1b8fd0a7c4ff3baeee7a3d6dabaec");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
