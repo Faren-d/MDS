@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-notes/lecture3_advanced-data-wrangling-with-pandas';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lecture 2: Reshaping data" href="lecture2_data-types-operators-and-tidy-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,7 +179,7 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture1_intro-to-python-via-pandas.html">Lecture 1: Introduction to Pandas</a></li>
 
 
@@ -194,6 +193,7 @@
 
 
 
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3: Advanced data wrangling with Pandas</a></li>
 </ul>
 
     </div>
@@ -1943,7 +1943,7 @@ Name: 2019-10-10 00:10:31, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">/var/folders/bm/qy38mcyd26vfwc9s2627qhyr0000gr/T/ipykernel_21189/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="nn">/var/folders/bm/qy38mcyd26vfwc9s2627qhyr0000gr/T/ipykernel_21966/3954837213.py</span> in <span class="ni">?</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2011-12-29&#39;</span><span class="p">,</span> <span class="s1">&#39;2011-12-31&#39;</span><span class="p">))</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span><span class="o">.</span><span class="n">year</span>  <span class="c1"># raises error</span>
 
@@ -2014,7 +2014,7 @@ dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x1342fd130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.resample.DatetimeIndexResampler object at 0x12ad65910&gt;
 </pre></div>
 </div>
 </div>
@@ -2385,23 +2385,23 @@ Categories (7, object): [&#39;BARBUNYA&#39;, &#39;BOMBAY&#39;, &#39;CALI&#39;, &
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style>
-  #altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c.vega-embed {
+  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed {
     width: 100%;
     display: flex;
   }
 
-  #altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c.vega-embed details,
-  #altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c.vega-embed details summary {
+  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed details,
+  #altair-viz-2b74914e1da3401789d3b7b031f8e7f7.vega-embed details summary {
     position: relative;
   }
 </style>
-<div id="altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c"></div>
+<div id="altair-viz-2b74914e1da3401789d3b7b031f8e7f7"></div>
 <script type="text/javascript">
   var VEGA_DEBUG = (typeof VEGA_DEBUG == "undefined") ? {} : VEGA_DEBUG;
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c") {
-      outputDiv = document.getElementById("altair-viz-24b0c8c5e5644c33b56ee1ebc6c4108c");
+    if (outputDiv.id !== "altair-viz-2b74914e1da3401789d3b7b031f8e7f7") {
+      outputDiv = document.getElementById("altair-viz-2b74914e1da3401789d3b7b031f8e7f7");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm/vega@5?noext",
@@ -2589,6 +2589,15 @@ Name: count, dtype: int64
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture2_data-types-operators-and-tidy-data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 2: Reshaping data</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
