@@ -4753,7 +4753,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">results</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;FirstLanguage&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Accent&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TestPct&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/frame.py:9339,</span> in <span class="ni">DataFrame.pivot</span><span class="nt">(self, columns, index, values)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/frame.py:9339,</span> in <span class="ni">DataFrame.pivot</span><span class="nt">(self, columns, index, values)</span>
 <span class="g g-Whitespace">   </span><span class="mi">9332</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">9333</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;pivot&quot;</span><span class="p">])</span>
 <span class="g g-Whitespace">   </span><span class="mi">9334</span> <span class="k">def</span> <span class="nf">pivot</span><span class="p">(</span>
@@ -4762,7 +4762,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">   </span><span class="mi">9337</span>     <span class="kn">from</span> <span class="nn">pandas.core.reshape.pivot</span> <span class="kn">import</span> <span class="n">pivot</span>
 <span class="ne">-&gt; </span><span class="mi">9339</span>     <span class="k">return</span> <span class="n">pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/pivot.py:570,</span> in <span class="ni">pivot</span><span class="nt">(data, columns, index, values)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/reshape/pivot.py:570,</span> in <span class="ni">pivot</span><span class="nt">(data, columns, index, values)</span>
 <span class="g g-Whitespace">    </span><span class="mi">566</span>         <span class="n">indexed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">multiindex</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="c1"># error: Argument 1 to &quot;unstack&quot; of &quot;DataFrame&quot; has incompatible type &quot;Union</span>
 <span class="g g-Whitespace">    </span><span class="mi">568</span> <span class="c1"># [List[Any], ExtensionArray, ndarray[Any, Any], Index, Series]&quot;; expected</span>
@@ -4773,7 +4773,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">    </span><span class="mi">573</span> <span class="p">]</span>
 <span class="g g-Whitespace">    </span><span class="mi">575</span> <span class="k">return</span> <span class="n">result</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/series.py:4615,</span> in <span class="ni">Series.unstack</span><span class="nt">(self, level, fill_value, sort)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/series.py:4615,</span> in <span class="ni">Series.unstack</span><span class="nt">(self, level, fill_value, sort)</span>
 <span class="g g-Whitespace">   </span><span class="mi">4570</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">4571</span><span class="sd"> Unstack, also known as pivot, Series with MultiIndex to produce DataFrame.</span>
 <span class="g g-Whitespace">   </span><span class="mi">4572</span><span class="sd"> </span>
@@ -4783,7 +4783,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">   </span><span class="mi">4613</span> <span class="kn">from</span> <span class="nn">pandas.core.reshape.reshape</span> <span class="kn">import</span> <span class="n">unstack</span>
 <span class="ne">-&gt; </span><span class="mi">4615</span> <span class="k">return</span> <span class="n">unstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:517,</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value, sort)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:517,</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value, sort)</span>
 <span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">if</span> <span class="n">is_1d_only_ea_dtype</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">516</span>     <span class="k">return</span> <span class="n">_unstack_extension_series</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">517</span> <span class="n">unstacker</span> <span class="o">=</span> <span class="n">_Unstacker</span><span class="p">(</span>
@@ -4793,7 +4793,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">    </span><span class="mi">521</span>     <span class="n">obj</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">value_columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">fill_value</span>
 <span class="g g-Whitespace">    </span><span class="mi">522</span> <span class="p">)</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:154,</span> in <span class="ni">_Unstacker.__init__</span><span class="nt">(self, index, level, constructor, sort)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:154,</span> in <span class="ni">_Unstacker.__init__</span><span class="nt">(self, index, level, constructor, sort)</span>
 <span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">if</span> <span class="n">num_cells</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">148</span>         <span class="sa">f</span><span class="s2">&quot;The following operation may generate </span><span class="si">{</span><span class="n">num_cells</span><span class="si">}</span><span class="s2"> cells &quot;</span>
@@ -4803,7 +4803,7 @@ Name: Fencing, Length: 93, dtype: int64
 <span class="g g-Whitespace">    </span><span class="mi">152</span>     <span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">154</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_selectors</span><span class="p">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/mds-general/lib/python3.12/site-packages/pandas/core/reshape/reshape.py:210,</span> in <span class="ni">_Unstacker._make_selectors</span><span class="nt">(self)</span>
+<span class="nn">File ~/miniforge3/lib/python3.11/site-packages/pandas/core/reshape/reshape.py:210,</span> in <span class="ni">_Unstacker._make_selectors</span><span class="nt">(self)</span>
 <span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="n">mask</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">210</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index contains duplicate entries, cannot reshape&quot;</span><span class="p">)</span>
