@@ -525,7 +525,7 @@ document.write(`
 <p>Let’s go ahead and make a plot of the distances ridden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -537,10 +537,10 @@ document.write(`
 </div>
 </div>
 <p>Notice the line graph joined adjacent points together, which may suggest there was a non-zero riding distance on (say) Sep 13 or Sep 21. But there are no biking entries for these days!</p>
-<p>Maybe we want to make a graph of cumulative distance.</p>
+<p>Plotting with pandas can be a good way to take a quick look at your data. It can also help you to spot potential problems. For example, let’s make a graph of <em>cumulative</em> distance covered over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +551,7 @@ document.write(`
 <img alt="../_images/f0ecf7bef847fef5a5bc602b6e814e3143235d0c32fb62025940d2ab253ad710.png" src="../_images/f0ecf7bef847fef5a5bc602b6e814e3143235d0c32fb62025940d2ab253ad710.png" />
 </div>
 </div>
-<p>Something isn’t right with the graph… the line should always be moving up and to the right!</p>
+<p>That kink in the graph is funny… since we’re plotting cumulative distance, the line should always be moving up and to the right!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2019-09-18&#39;</span><span class="p">]</span>
@@ -617,7 +617,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bike_df</span> <span class="o">=</span> <span class="n">bike_df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">()</span>
+<span class="n">bike_df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -679,27 +679,13 @@ document.write(`
 <section id="combining-multiple-data-frames">
 <h2>Combining multiple data frames<a class="headerlink" href="#combining-multiple-data-frames" title="Link to this heading">#</a></h2>
 <p>Sometimes we have meaningful data spread across different data frames (or read in from different files) that we wish to combine. There are many ways to combine data in pandas, and we will look at some of them today.</p>
-<p>Let us load in a small sample of the weather dataset we saw before. We will only keep a few rows and columns.</p>
+<p>To begin let’s load in some data frames with weather information for different dates. You might notice that these frames share information across certain rows or columns, i.e. the data sets are related.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/YVR_weather_data.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">908</span><span class="p">)),</span> <span class="n">usecols</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">23</span><span class="p">])</span>
-<span class="n">weather</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10, 6)
-</pre></div>
-</div>
-</div>
-</div>
-<p>We’re going to create a few different slices of our DataFrame, and then try and recombine them together in sensible ways.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w1</span> <span class="o">=</span> <span class="n">weather</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># First 5 rows, first 4 columns</span>
-<span class="n">w2</span> <span class="o">=</span> <span class="n">weather</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">5</span><span class="p">:,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># Same columns as w1, different rows</span>
-<span class="n">w3</span> <span class="o">=</span> <span class="n">weather</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span> <span class="c1"># Same rows as w1, different columns</span>
-<span class="n">w4</span> <span class="o">=</span> <span class="n">weather</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span> <span class="c1"># A mix of rows and columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weather1.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weather2.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weather3.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">w4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weather4.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -770,6 +756,200 @@ document.write(`
       <td>2013</td>
       <td>1</td>
       <td>2.8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date/Time</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Mean Temp (°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>Feb-13</td>
+      <td>2013</td>
+      <td>2</td>
+      <td>5.4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Mar-13</td>
+      <td>2013</td>
+      <td>3</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Apr-13</td>
+      <td>2013</td>
+      <td>4</td>
+      <td>9.5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>May-13</td>
+      <td>2013</td>
+      <td>5</td>
+      <td>13.3</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Jun-13</td>
+      <td>2013</td>
+      <td>6</td>
+      <td>15.4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Total Rain (mm)</th>
+      <th>Spd of Max Gust (km/h)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.0</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>197.0</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>162.8</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>183.4</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100.4</td>
+      <td>39</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date/Time</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Spd of Max Gust (km/h)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>Nov-12</td>
+      <td>2012</td>
+      <td>11</td>
+      <td>63</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dec-12</td>
+      <td>2012</td>
+      <td>12</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Apr-13</td>
+      <td>2013</td>
+      <td>4</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Jun-13</td>
+      <td>2013</td>
+      <td>6</td>
+      <td>44</td>
     </tr>
   </tbody>
 </table>
@@ -1408,6 +1588,8 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p>We were certainly able to “stick” our data frames together here, but we may not have gained the information we wanted. For example, the data frame above contains entries for both <code class="docutils literal notranslate"><span class="pre">Mean</span> <span class="pre">Temp</span></code> and <code class="docutils literal notranslate"><span class="pre">Total</span> <span class="pre">Rain</span></code> for November 12, 2012, but these are split across different rows.</p>
+<p>If we know beforehand that shared dates should correspond to the same example in our data, it would be good to use this fact when combining the data frames. The next section discuss how to implement this in pandas.</p>
 </section>
 <section id="combining-with-pd-merge">
 <h3>Combining with <code class="docutils literal notranslate"><span class="pre">pd.Merge</span></code><a class="headerlink" href="#combining-with-pd-merge" title="Link to this heading">#</a></h3>
@@ -1695,12 +1877,12 @@ document.write(`
 </div></div></div>
 </div>
 <p>Notice again that the index was not retained when matching on columns.</p>
-<p>Let’s create a Data Frame of ‘seasons’ to categorize the different months of the year, and try to add this to our weather data.</p>
+<p>Let’s create a Data Frame of ‘seasons’ to categorize the different months of the year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seasons</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
                     <span class="s1">&#39;month&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],</span> 
-                    <span class="s1">&#39;season&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">]</span>
+                    <span class="s1">&#39;season&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Spring&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Fall&#39;</span><span class="p">,</span> <span class="s1">&#39;Winter&#39;</span><span class="p">]</span>
                        <span class="p">}</span>
                       <span class="p">)</span>
 
@@ -1745,7 +1927,7 @@ document.write(`
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>Winter</td>
+      <td>Spring</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1785,7 +1967,7 @@ document.write(`
     <tr>
       <th>10</th>
       <td>11</td>
-      <td>Winter</td>
+      <td>Fall</td>
     </tr>
     <tr>
       <th>11</th>
@@ -1797,6 +1979,103 @@ document.write(`
 </div></div></div>
 </div>
 <p>We made this Data Frame “by hand”, using a dictionary object. Dictionaries are another object type in Python, similar to lists but indexed based on “keys” that do not need to be integers. The keys in this case serve as column names when passed to <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code>.</p>
+<p>Now if we have some dataset that includes months as a column, we can merge with <code class="docutils literal notranslate"><span class="pre">seasons</span></code>. For example, we can use the following data set that we saw in Lecture 1 (we are dropping some columns):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/YVR_weather_data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">weather</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date/Time</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Mean Max Temp (°C)</th>
+      <th>Mean Min Temp (°C)</th>
+      <th>Mean Temp (°C)</th>
+      <th>Extr Max Temp (°C)</th>
+      <th>Extr Min Temp (°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Jan-37</td>
+      <td>1937</td>
+      <td>1</td>
+      <td>0.6</td>
+      <td>-8.1</td>
+      <td>-3.8</td>
+      <td>6.1</td>
+      <td>-16.1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Feb-37</td>
+      <td>1937</td>
+      <td>2</td>
+      <td>5.2</td>
+      <td>-1.3</td>
+      <td>2.0</td>
+      <td>10.0</td>
+      <td>-7.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Mar-37</td>
+      <td>1937</td>
+      <td>3</td>
+      <td>11.7</td>
+      <td>2.9</td>
+      <td>7.3</td>
+      <td>17.2</td>
+      <td>-1.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Apr-37</td>
+      <td>1937</td>
+      <td>4</td>
+      <td>11.9</td>
+      <td>4.8</td>
+      <td>8.4</td>
+      <td>16.1</td>
+      <td>1.1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>May-37</td>
+      <td>1937</td>
+      <td>5</td>
+      <td>16.3</td>
+      <td>6.6</td>
+      <td>11.5</td>
+      <td>20.6</td>
+      <td>1.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p>Let’s attempt a left join for <code class="docutils literal notranslate"><span class="pre">weather</span></code> with <code class="docutils literal notranslate"><span class="pre">seasons</span></code>. We will have to tell pandas that <code class="docutils literal notranslate"><span class="pre">Month</span></code> in the left frame matches <code class="docutils literal notranslate"><span class="pre">month</span></code> in the second (note that the strings are not identical).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1826,9 +2105,11 @@ document.write(`
       <th>Date/Time</th>
       <th>Year</th>
       <th>Month</th>
+      <th>Mean Max Temp (°C)</th>
+      <th>Mean Min Temp (°C)</th>
       <th>Mean Temp (°C)</th>
-      <th>Total Rain (mm)</th>
-      <th>Spd of Max Gust (km/h)</th>
+      <th>Extr Max Temp (°C)</th>
+      <th>Extr Min Temp (°C)</th>
       <th>month</th>
       <th>season</th>
     </tr>
@@ -1836,116 +2117,150 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>Sep-12</td>
-      <td>2012</td>
-      <td>9</td>
-      <td>15.4</td>
-      <td>5.0</td>
-      <td>56</td>
-      <td>9</td>
-      <td>Fall</td>
+      <td>Jan-37</td>
+      <td>1937</td>
+      <td>1</td>
+      <td>0.6</td>
+      <td>-8.1</td>
+      <td>-3.8</td>
+      <td>6.1</td>
+      <td>-16.1</td>
+      <td>1</td>
+      <td>Winter</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Oct-12</td>
-      <td>2012</td>
-      <td>10</td>
-      <td>10.5</td>
-      <td>197.0</td>
-      <td>74</td>
-      <td>10</td>
-      <td>Fall</td>
+      <td>Feb-37</td>
+      <td>1937</td>
+      <td>2</td>
+      <td>5.2</td>
+      <td>-1.3</td>
+      <td>2.0</td>
+      <td>10.0</td>
+      <td>-7.8</td>
+      <td>2</td>
+      <td>Winter</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Nov-12</td>
-      <td>2012</td>
-      <td>11</td>
-      <td>7.2</td>
-      <td>162.8</td>
-      <td>63</td>
-      <td>11</td>
-      <td>Winter</td>
+      <td>Mar-37</td>
+      <td>1937</td>
+      <td>3</td>
+      <td>11.7</td>
+      <td>2.9</td>
+      <td>7.3</td>
+      <td>17.2</td>
+      <td>-1.1</td>
+      <td>3</td>
+      <td>Spring</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Dec-12</td>
-      <td>2012</td>
-      <td>12</td>
-      <td>4.4</td>
-      <td>183.4</td>
-      <td>65</td>
-      <td>12</td>
-      <td>Winter</td>
+      <td>Apr-37</td>
+      <td>1937</td>
+      <td>4</td>
+      <td>11.9</td>
+      <td>4.8</td>
+      <td>8.4</td>
+      <td>16.1</td>
+      <td>1.1</td>
+      <td>4</td>
+      <td>Spring</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Jan-13</td>
-      <td>2013</td>
-      <td>1</td>
-      <td>2.8</td>
-      <td>100.4</td>
-      <td>39</td>
-      <td>1</td>
-      <td>Winter</td>
+      <td>May-37</td>
+      <td>1937</td>
+      <td>5</td>
+      <td>16.3</td>
+      <td>6.6</td>
+      <td>11.5</td>
+      <td>20.6</td>
+      <td>1.7</td>
+      <td>5</td>
+      <td>Spring</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>912</th>
       <td>Feb-13</td>
       <td>2013</td>
       <td>2</td>
+      <td>7.8</td>
+      <td>3.0</td>
       <td>5.4</td>
-      <td>74.4</td>
-      <td>63</td>
+      <td>10.4</td>
+      <td>-1.1</td>
       <td>2</td>
       <td>Winter</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>913</th>
       <td>Mar-13</td>
       <td>2013</td>
       <td>3</td>
+      <td>10.5</td>
+      <td>3.9</td>
       <td>7.2</td>
-      <td>108.0</td>
-      <td>80</td>
+      <td>15.7</td>
+      <td>-0.7</td>
       <td>3</td>
-      <td>Winter</td>
+      <td>Spring</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>914</th>
       <td>Apr-13</td>
       <td>2013</td>
       <td>4</td>
+      <td>12.8</td>
+      <td>6.2</td>
       <td>9.5</td>
-      <td>115.8</td>
-      <td>76</td>
+      <td>17.2</td>
+      <td>1.0</td>
       <td>4</td>
       <td>Spring</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>915</th>
       <td>May-13</td>
       <td>2013</td>
       <td>5</td>
+      <td>17.1</td>
+      <td>9.5</td>
       <td>13.3</td>
-      <td>66.0</td>
-      <td>54</td>
+      <td>22.2</td>
+      <td>2.5</td>
       <td>5</td>
       <td>Spring</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>916</th>
       <td>Jun-13</td>
       <td>2013</td>
       <td>6</td>
+      <td>19.3</td>
+      <td>11.5</td>
       <td>15.4</td>
-      <td>2.8</td>
-      <td>44</td>
+      <td>22.0</td>
+      <td>9.2</td>
       <td>6</td>
       <td>Summer</td>
     </tr>
   </tbody>
 </table>
+<p>917 rows × 10 columns</p>
 </div></div></div>
 </div>
 <p>With <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code>, we can combine data frames in a one-to-one, one-to-many or a many-to-many fashion, leading to a large range of possibilities. You will see many examples of joins in DSCI 513.</p>
@@ -1961,7 +2276,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[[</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Total Rain (mm)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span> <span class="c1"># we will see more from numpy in future lectures</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[[</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean Temp (°C)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span> <span class="c1"># we will see more from numpy in future lectures</span>
 </pre></div>
 </div>
 </div>
@@ -1985,82 +2300,89 @@ document.write(`
     <tr style="text-align: right;">
       <th></th>
       <th>Month</th>
-      <th>Total Rain (mm)</th>
+      <th>Mean Temp (°C)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.197225</td>
-      <td>1.609438</td>
+      <td>0.000000</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.302585</td>
-      <td>5.283204</td>
+      <td>0.693147</td>
+      <td>0.693147</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2.397895</td>
-      <td>5.092522</td>
+      <td>1.098612</td>
+      <td>1.987874</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.484907</td>
-      <td>5.211670</td>
+      <td>1.386294</td>
+      <td>2.128232</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000000</td>
-      <td>4.609162</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>0.693147</td>
-      <td>4.309456</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>1.098612</td>
-      <td>4.682131</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>1.386294</td>
-      <td>4.751865</td>
-    </tr>
-    <tr>
-      <th>8</th>
       <td>1.609438</td>
-      <td>4.189655</td>
+      <td>2.442347</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>912</th>
+      <td>0.693147</td>
+      <td>1.686399</td>
+    </tr>
+    <tr>
+      <th>913</th>
+      <td>1.098612</td>
+      <td>1.974081</td>
+    </tr>
+    <tr>
+      <th>914</th>
+      <td>1.386294</td>
+      <td>2.251292</td>
+    </tr>
+    <tr>
+      <th>915</th>
+      <td>1.609438</td>
+      <td>2.587764</td>
+    </tr>
+    <tr>
+      <th>916</th>
       <td>1.791759</td>
-      <td>1.029619</td>
+      <td>2.734368</td>
     </tr>
   </tbody>
 </table>
+<p>917 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[</span><span class="s1">&#39;Total Rain (mm)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># apply is a method for both Data Frames and Series</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[</span><span class="s1">&#39;Mean Temp (°C)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># apply is a method for both Data Frames and Series</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      5
-1    197
-2    162
-3    183
-4    100
-5     74
-6    108
-7    115
-8     66
-9      2
-Name: Total Rain (mm), dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      -3
+1       2
+2       7
+3       8
+4      11
+       ..
+912     5
+913     7
+914     9
+915    13
+916    15
+Name: Mean Temp (°C), Length: 917, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -2077,7 +2399,7 @@ Name: Total Rain (mm), dtype: int64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         Cold
 1         Cold
-2         Cold
+2     Not Cold
 3     Not Cold
 4     Not Cold
 5         Warm
@@ -2085,7 +2407,7 @@ Name: Total Rain (mm), dtype: int64
 7         Warm
 8          NaN
 9          NaN
-10        Cold
+10         NaN
 11        Cold
 Name: season, dtype: object
 </pre></div>
@@ -2237,7 +2559,7 @@ Name: season, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x136f9c1d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x12f64b830&gt;
 </pre></div>
 </div>
 </div>
@@ -3103,6 +3425,127 @@ Name: season, dtype: object
 </div></div></div>
 </div>
 <p>Later on, we will learn how to write our own Python functions. Such ‘custom’ functions can also be passed to <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code>.</p>
+<p>Note that we can pass multiple columns to <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>. The groups will be indexed based on all combinations of entries that appear in the listed columns</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Released_Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Certificate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Meta_score&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Gross&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sum&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Meta_score</th>
+      <th>Gross</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>sum</th>
+    </tr>
+    <tr>
+      <th>Released_Year</th>
+      <th>Certificate</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1921</th>
+      <th>Passed</th>
+      <td>NaN</td>
+      <td>5450000.0</td>
+    </tr>
+    <tr>
+      <th>1924</th>
+      <th>Passed</th>
+      <td>NaN</td>
+      <td>977375.0</td>
+    </tr>
+    <tr>
+      <th>1925</th>
+      <th>Passed</th>
+      <td>NaN</td>
+      <td>5450000.0</td>
+    </tr>
+    <tr>
+      <th>1926</th>
+      <th>Passed</th>
+      <td>NaN</td>
+      <td>1033895.0</td>
+    </tr>
+    <tr>
+      <th>1927</th>
+      <th>Passed</th>
+      <td>NaN</td>
+      <td>539540.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">2020</th>
+      <th>PG-13</th>
+      <td>90.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>R</th>
+      <td>77.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>U</th>
+      <td>83.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>UA</th>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3010</th>
+      <th>UA</th>
+      <td>74.0</td>
+      <td>292576195.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>330 rows × 2 columns</p>
+</div></div></div>
+</div>
 <p>Finally, you can <code class="docutils literal notranslate"><span class="pre">aggregate()</span></code> on a non-grouped data frame as well. This is essentially what <code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code> does under the hood.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
