@@ -2269,11 +2269,26 @@ document.write(`
 <h3>Applying Custom Functions<a class="headerlink" href="#applying-custom-functions" title="Link to this heading">#</a></h3>
 <p>There will be times when you want to apply a function that is not built-in to Pandas. For this, we also have methods:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">df.apply()</span></code>, applies a function column-wise or row-wise across a dataframe (the function must be able to accept/return an array)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.applymap()</span></code>, applies a function element-wise (for functions that accept/return single values at a time)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.apply()</span></code>, applies a function <strong>column-wise or row-wise</strong> across a dataframe (the function must be able to accept/return an array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.map()</span></code>, applies a function element-wise (so individually) across <strong>every element</strong> in the data frame (meant for functions that accept/return single values at a time)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">series.apply()</span></code>, same as above for Pandas <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">series.map()</span></code>, also for Series, but optionally accepts a dictionary as input.</p></li>
 </ul>
+<p>It is important to understand how <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.map()</span></code> differ. Sometimes it appears as though these functions work the same. This is the case for functions which accept and return single values at a time, like the <code class="docutils literal notranslate"><span class="pre">round</span></code> function:</p>
+<a class="reference internal image-reference" href="../_images/apply-round.png"><img alt="../_images/apply-round.png" src="../_images/apply-round.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/map-round.png"><img alt="../_images/map-round.png" src="../_images/map-round.png" style="width: 600px;" /></a>
+<p>However, when using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.map()</span></code> with methods/functions that act on a series or array and return a single value, like <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>, the objects they return are quite different:</p>
+<a class="reference internal image-reference" href="../_images/apply-sum.png"><img alt="../_images/apply-sum.png" src="../_images/apply-sum.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/map-sum.png"><img alt="../_images/map-sum.png" src="../_images/map-sum.png" style="width: 600px;" /></a>
+<p>It is also important to know how <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.apply()</span></code> works with regards to what <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> and <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> means. This clarification is important because in many other pandas functions/methods,  <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> means row-wise, and  <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> means column-wise. But that is not the case here. From the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html"><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.apply()</span></code> docs</a>:</p>
+<p><em>“Objects passed to the function are Series objects whose index is either the DataFrame’s index (axis=0) or the DataFrame’s columns (axis=1).”</em></p>
+<p>So for <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.apply()</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code> means the <strong>columns</strong> (saying you want the index to be the DataFrame’s index)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code> means the <strong>rows</strong> (saying you want the index to be the DataFrame’s columns)</p></li>
+</ul>
+<p><strong>For <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.apply()</span></code> <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> is the default, meaning it works column-wise unless you specify otherwise (as shown in the examples above).</strong></p>
+<p>Here’s some examples of using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.map()</span></code>  with our weather data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[[</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean Temp (°C)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span> <span class="c1"># we will see more from numpy in future lectures</span>
@@ -2388,6 +2403,20 @@ Name: Mean Temp (°C), Length: 917, dtype: int64
 </div>
 </div>
 <p>We provide a dictionary as input to <code class="docutils literal notranslate"><span class="pre">Series.map</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather</span><span class="p">[[</span><span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean Temp (°C)&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Month             5940.0
+Mean Temp (°C)    9198.1
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seasons</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
@@ -2559,7 +2588,7 @@ Name: season, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x12ed531d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x127f2e5d0&gt;
 </pre></div>
 </div>
 </div>
